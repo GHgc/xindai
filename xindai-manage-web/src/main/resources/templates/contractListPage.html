@@ -86,6 +86,19 @@
 
 </script>
 
+<!--<script type="text/javascript">
+    $(function () {
+        $("#tt").datagrid({
+            url:'pageQuery',
+            pagination:true,
+            queryParams:{"borrowerList":""},
+            pageNumber:1,
+            pageSize:1,
+            pageList:[1,10]
+        })
+    });
+</script>-->
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('table.datagrid-htable').find('.datagrid-cell').css("text-align", 'center');
@@ -342,18 +355,23 @@
 <div class="panel datagrid" style="width: auto;">
     <div class="panel-header" style="width: auto;"><div class="panel-title">合同列表</div><div class="panel-tool"></div></div>
 
-    <table id="tt" class="easyui-treegrid" style="width:auto;height:250px"
-           pagination="true" >
+    <table id="tt" class="easyui-datagrid" style="width:auto;height:250px" url="pageQuery"
+           pagination="true" data-options="
+					pageList:[1,2,3],
+					pageSize:2,
+					pageNumber:1
+				">
         <thead>
         <tr >
 
             <th data-options="field:'item_id1',width:200">操作</th>
-            <th data-options="field:'item_id2',width:100">合同编号</th>
+            <th data-options="field:'loanContractNum',width:100, formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.loanContractNum;} else {return value;}}">合同编号</th>
             <th data-options="field:'item_id15',width:100">合同状态</th>
 
-            <th data-options="field:'item_id3',width:100">客户姓名</th>
-            <th data-options="field:'item_id4',width:120">证件类型</th>
-            <th data-options="field:'item_id5',width:150">证件号</th>
+            <th data-options="field:'clientName',width:100">客户姓名</th>
+            <!--<th data-options="field:'clientName',width:100, formatter:function(value,row,index){if (row.borrowerInfoList){return row.borrowerInfoList.clientName;} else {return value;}}">客户姓名</th>-->
+            <th data-options="field:'identityType',width:120">证件类型</th>
+            <th data-options="field:'identityNum',width:150">证件号</th>
 
 
             <th data-options="field:'item_id6',width:100">贷款品种</th>

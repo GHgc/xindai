@@ -77,10 +77,27 @@ public class NplmBorrowerInfo implements Serializable {
     private String updateType;
 
     @Transient
-    private List<NplmLoanContract> nplmLoanContract;
+    private NplmLoanContract nplmLoanContract;
+
+    public void setNplmLoanContract(NplmLoanContract nplmLoanContract) {
+        this.nplmLoanContract = nplmLoanContract;
+    }
+
+    public void setNplmContractAttribute(NplmContractAttribute nplmContractAttribute) {
+        this.nplmContractAttribute = nplmContractAttribute;
+    }
+
+    public NplmLoanContract getNplmLoanContract() {
+        return nplmLoanContract;
+    }
+
+    public NplmContractAttribute getNplmContractAttribute() {
+        return nplmContractAttribute;
+    }
 
     @Transient
-    private List<NplmContractAttribute> nplmContractAttribute;
+
+    private NplmContractAttribute nplmContractAttribute;
 
 
     @Id
@@ -755,21 +772,7 @@ public class NplmBorrowerInfo implements Serializable {
     }
 
 
-    public List<NplmLoanContract> getNplmLoanContract() {
-        return nplmLoanContract;
-    }
 
-    public void setNplmLoanContract(List<NplmLoanContract> nplmLoanContract) {
-        this.nplmLoanContract = nplmLoanContract;
-    }
-
-    public List<NplmContractAttribute> getNplmContractAttribute() {
-        return nplmContractAttribute;
-    }
-
-    public void setNplmContractAttribute(List<NplmContractAttribute> nplmContractAttribute) {
-        this.nplmContractAttribute = nplmContractAttribute;
-    }
 
     @Override
     public boolean equals(Object o) {

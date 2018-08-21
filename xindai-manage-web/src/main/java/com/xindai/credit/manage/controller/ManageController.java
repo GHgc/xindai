@@ -1,13 +1,18 @@
 package com.xindai.credit.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.xindai.credit.service.NplmBorrowerInfoService;
+import com.alibaba.fastjson.JSON;
 import com.xindai.credit.bean.NplmBorrowerInfo;
+import com.xindai.credit.service.NplmBorrowerInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 @Controller
 public class ManageController {
@@ -22,25 +27,34 @@ public class ManageController {
 
     // 合同列表
     @RequestMapping("contractListPage")
-    public String contractListPage(HttpServletRequest request){
-        /**
-         * 取出三张表中的信息
-         * 以   nplm_borrower_info              '客户_借款人信息'   为主
-         *          NplmBorrowerInfo
-         *
-         *      NPLM_loan_contract              '合同_贷款合同表'
-         *          NplmLoanContract
-         *
-         *      nplm_contract_attribute         '合同_合同属性表'
-         *          NplmContractAttribute
-         */
-        // 取得贷款人的所有信息
-        List<NplmBorrowerInfo> borrowerList = nplmBorrowerInfoService.getAllBorrower();
-
-
-        request.setAttribute("borrowerList",borrowerList);
-
+    public String contractListPage(){
         return "contractListPage";
+    }
+
+
+    // 查询数据
+    @RequestMapping("pageQuery")
+    @ResponseBody
+    public Map<String,Object> getPageQuery(  HttpServletRequest request){
+
+        // 从前台获取数据
+        int page = Integer.parseInt(request.getParameter("page"));
+        int rows = Integer.parseInt(request.getParameter("rows"));
+        int pageSize = rows;
+        int pageNum = (page-1)*rows;
+
+        int total = nplmBorrowerInfoService.getCount();
+
+
+
+        List<NplmBorrowerInfo> borrowerList = nplmBorrowerInfoService.getPageQuery(pageNum, rows);
+
+        Map map = new HashMap<>();
+        map.put("total",total);
+        map.put("rows",borrowerList);
+
+        System.out.println(JSON.toJSONString(map));
+        return map;
     }
 
 
