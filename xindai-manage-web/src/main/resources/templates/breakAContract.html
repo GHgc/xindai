@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0029)http://10.100.30.79:9099/smp/ -->
+<HTML><HEAD><TITLE>逾期沟通</TITLE>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" content="ie=edge"/>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <META content=no-cache http-equiv=Pragma>
+    <META content=no-cache http-equiv=Cache-Control>
+    <META content=0 http-equiv=Expires>
+    <link rel="stylesheet" href="../ICPlatform/css/model.css" type="text/css">
+    <link rel="stylesheet" href="../ICPlatform/css/model_info.css" type="text/css">
+    <LINK rel=stylesheet type=text/css href="../smp_files/zTreeStyle.css">
+    <link rel="stylesheet"  href="../ICPlatform/plugins/easyUI/themes/default/easyui.css" type="text/css">
+    <link rel="stylesheet" href="../ICPlatform/plugins/easyUI/themes/icon.css" type="text/css">
+
+    <script src="../ICPlatform/js/jquery-1.7.1.js" type="text/javascript"></script>
+    <script src="../ICPlatform/js/easytooltip.js" type="text/javascript"></script>
+    <script src="../ICPlatform/js/jquery.form.js" type="text/javascript"></script>
+    <script src="../ICPlatform/plugins/easyUI/jquery.easyui.min.js" type="text/javascript"></script>
+    <SCRIPT type="text/javascript" src="../smp_files/easyui-lang-zh_CN.js"></SCRIPT>
+    <script type="text/javascript" src="../smp_files/formValidatorRegex.js"></script>
+
+
+    <STYLE type=text/css>UL.ztree {
+        BORDER-BOTTOM: #617775 1px solid; BORDER-LEFT: #617775 1px solid; MARGIN-TOP: 10px; BACKGROUND: #f0f6e4; BORDER-TOP: #617775 1px solid; BORDER-RIGHT: #617775 1px solid
+    }
+    </STYLE>
+
+    <SCRIPT type=text/javascript src="../smp_files/common.js"></SCRIPT>
+
+    <SCRIPT type=text/javascript src="../smp_files/constants.js"></SCRIPT>
+
+
+
+
+</head>
+<body>
+
+
+<style type="text/css">
+    td {
+        border:dotted 1px rgb(204,204,204);
+        font-size: 12px;
+    }
+</style>
+
+<script language="javascript" type="text/javascript">
+
+
+
+
+    function showNormal()
+    {
+        var code=$("#je").attr("checked");
+//alert(code);
+        if(code=="checked"){
+            document.getElementById('normalDiv').style.display = "block";
+        }else{
+            document.getElementById('normalDiv').style.display = "none";
+        }
+
+    }
+    function showNormal1()
+    {
+        var code=$("#je1").attr("checked");
+//alert(code);
+        if(code=="checked"){
+            document.getElementById('normalDiv1').style.display = "block";
+        }else{
+            document.getElementById('normalDiv1').style.display = "none";
+        }
+
+    }
+
+    function confirm1(){
+        $.messager.confirm('系统提示：', '确定要删除该条记录么？此操作不可恢复！', function(r){
+            if (r){
+                alert('confirmed: '+r);
+            }
+
+        });
+
+    }
+    function confirm11(){
+        $.messager.confirm('开发提示：', '需要先通过复选框选择要修改的记录，点击按钮后弹出保存后的添加页面。', function(r){
+            if (r){
+                alert('confirmed: '+r);
+            }
+
+        });
+
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('table.datagrid-htable').find('.datagrid-cell').css("text-align", 'center');
+        $('table.datagrid-btable').find('.datagrid-row').css("text-align", 'center');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id').css("text-align", 'right');
+
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#dlg').dialog('close')
+        $('#dlg1').dialog('close')
+    });
+</script>
+
+<style type="text/css">
+    .page_my {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow-y: scroll;
+    }
+
+
+</style>
+
+<div class="page_my">
+    <div>
+        <table id="table_OperateBtn" border=0>
+            <tbody><tr>
+                <td class="td_1">
+	                    	<span id="submit_right">
+
+		                         <a id="backButten" href="javascript:window.history.go(-1)" class="easyui-linkbutton l-btn" group="">返回</a>
+	                        </span>
+                </td>
+            </tr>
+            </tbody></table>
+    </div>
+
+    <div>
+        <table id="table_">
+            <tbody><tr id="tr_cell">
+                <td id="title_background" colspan="12">合同基本信息 &nbsp;   <!--a href="javascript:dRetrun();" id="special"> 查看该合同图片资料 </a></td-->
+            </tr>
+            <tr id="tr_cell">
+
+                <td id="td_d">合同编号：</td>
+                <td id="td_i">
+                    <span id="clientName" class="reductionInformation">12342123</span>
+                </td>
+
+                <td id="td_d">客户姓名：</td>
+                <td id="td_i">
+                    <span id="clientName" class="reductionInformation">韩显荣</span>
+                </td>
+                <td id="td_d">证件号：</td>
+                <td id="td_i">
+                    <span id="idNumber" class="reductionInformation">330327197706273449</span>
+                </td>
+
+                <td id="td_d">城市地区：</td>
+                <td id="td_i">
+                    <span id="clientName" class="reductionInformation">北京</span>
+                </td>
+
+
+            </tr>
+            <tr id="tr_cell">
+
+                <td id="td_d">借款金额：</td>
+                <td id="td_i">
+                    <span id="amount" class="reductionInformation">¥165,267.01</span>
+                </td>
+
+                <td id="td_d">贷款品种：</td>
+                <td id="td_i">
+                    <span id="clientManager" class="reductionInformation">新薪宜楼贷</span>
+                </td>
+
+                <td id="td_d">贷款分期数：</td>
+                <td id="td_i">
+                    <span id="clientName" class="reductionInformation">12</span>
+                </td>
+
+                <td id="td_d">营业部：</td>
+                <td id="td_i">
+                    <span id="officeName">北京东城分部</span>
+                </td>
+
+            </tr>
+
+            </tbody></table>
+    </div><br>
+
+
+
+    <div class="easyui-tabs" style="width:auto;height:auto;">
+
+
+
+
+
+        <div title="逾期沟通记录" style="padding:10px;">
+            <table id="table_OperateBtn" border=0>
+                <tbody><tr>
+                    <td>
+	                    	<span id="submit_right">
+		                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#dlg1').dialog('open')">添加</a>
+		                        &nbsp;
+							 <a id="submit" href="#"  onclick="confirm11()" class="easyui-linkbutton l-btn" onClick="commitDeratePayment();" group="">修改</a>
+		                        &nbsp;
+							<a id="submit" href="#"  onclick="confirm1()" class="easyui-linkbutton l-btn" onClick="commitDeratePayment();" group="">删除</a>
+
+	                        </span>
+                    </td>
+                </tr>
+                </tbody></table>
+
+
+            <table id="tt" class="easyui-treegrid" style="width:auto;height:250px"
+                   data-options="url:'get_data.php',idField:'id',treeField:'name'" pagination="true">
+                <thead>
+                <tr>
+
+                    <th><input type="checkbox"  id="cboxchecked" /></th>
+
+                    <th field="name1" width="100">合同编号</th>
+                    <th field="name9" width="100">催收阶段</th>
+                    <th field="name2" width="100">沟通时间</th>
+                    <th field="name5" width="100">沟通人</th>
+                    <th field="name4" width="100">联系人</th>
+                    <th field="name10" width="120">联系人与贷款人关系</th>
+                    <th field="name11" width="100">联系电话</th>
+                    <th field="name6" width="100">沟通等级</th>
+                    <th field="name3" width="400">沟通情况</th>
+                    <th field="name8" width="100">沟通结果</th>
+                    <th field="name7" width="100">下次沟通时间</th>
+
+                    <!--th field="name3" width="100">操作</th-->
+
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox"  id="cboxchecked" /></td>
+                    <td>4563332</td>
+                    <td>电话催收</td>
+                    <td>2014-07-13</td>
+                    <td>admin</td>
+                    <td>张三</td>
+                    <td>朋友</td>
+                    <td>11111111</td>
+                    <td>低风险</td>
+                    <td>…………</td>
+                    <td>有效</td>
+                    <td>2014-07-15</td>
+
+
+                </tr>
+                <tr>
+
+                    <td><input type="checkbox"  id="cboxchecked" /></td>
+                    <td>1235674</td>
+                    <td>电话催收</td>
+                    <td>2014-07-13</td>
+                    <td>admin1</td>
+                    <td>张三</td>
+                    <td>朋友</td>
+                    <td>11111111</td>
+                    <td>低风险</td>
+                    <td>…………</td>
+                    <td>有效</td>
+                    <td>2014-07-15</td>
+
+
+                </tr>
+                <tr>
+
+                    <td><input type="checkbox"  id="cboxchecked" /></td>
+                    <td>1235674</td>
+                    <td>电话催收</td>
+                    <td>2014-07-13</td>
+                    <td>admin1</td>
+                    <td>张三</td>
+                    <td>朋友</td>
+                    <td>11111111</td>
+                    <td>低风险</td>
+                    <td>…………</td>
+                    <td>有效</td>
+                    <td>2014-07-15</td>
+
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <br>
+        <p>
+
+
+
+        <table id="dlg1" class="easyui-dialog" title="添加逾期沟通记录" data-options="iconCls:'icon-save'"style="width:auto;height:auto">
+
+            <thead>
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">催收阶段： </td>
+                <td id="td_s2" width="13%">
+                    <select class="easyui-combobox combobox-f combo-f" id="productsTypeName" style="width: 200px; display: none;" editable="fales" comboname="productsTypeName">
+                        <option value="1">请选择</option>
+                        <option value="2">法律流程</option>
+                        <option value="3">挂牌拍卖</option>
+                        <option value="4">电话催收</option>
+                        <option value="5">上门催收</option>
+                        <option value="6">展期办理中</option>
+                        <option value="7">申请减免中</option>
+                        <option value="8">其他</option>
+
+                    </select></td>
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:40% ">沟通时间： </td>
+                <td id="td_s2" width="13%">
+                    <input type="text" id="repaymentStart" style="width: 200px; display: none;" class="easyui-datetimebox" value="" comboname="repaymentStart">
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">联系人： </td>
+                <td id="td_s2" width="13%">
+                    <input  id="clientName" name="clientName" style="width:188px;" value="">
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">联系人与贷款人关系： </td>
+                <td id="td_s2" width="13%">
+                    <input  id="clientName" name="clientName" style="width:188px;" value="">
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">联系电话： </td>
+                <td id="td_s2" width="13%">
+                    <input  id="clientName" name="clientName" style="width:188px;" value="">(多条联系电话用<span style="color: red;">；</span>隔开)
+            </tr>
+
+            <tr id="tr_cell">
+                <td id="td_c"  style="width:40%;" >&nbsp;</span>沟通情况：</td>
+                <td id="td_s2"  style="width:75%;">
+                    <textarea colspan="15" style="width:400px;" class="easyui-validatebox validatebox-text"></textarea>
+                    (字数不要超过<span style="color: red;">2000</span>字)
+                </td>
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">沟通等级： </td>
+                <td id="td_s2" width="13%">
+                    <select class="easyui-combobox combobox-f combo-f" id="productsTypeName" style="width: 200px; display: none;" editable="fales" comboname="productsTypeName">
+                        <option value="1">请选择</option>
+                        <option value="2">低风险</option>
+                        <option value="3">中低风险</option>
+                        <option value="4">中高风险</option>
+                        <option value="5">高风险</option>
+
+                    </select></td>
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:15% ">沟通结果： </td>
+                <td id="td_s2" width="13%">
+                    <select class="easyui-combobox combobox-f combo-f" id="productsTypeName" style="width: 200px; display: none;" editable="fales" comboname="productsTypeName">
+                        <option value="1">请选择</option>
+                        <option value="2">有效</option>
+                        <option value="3">无效</option>
+
+                    </select></td>
+            </tr>
+
+            <tr  id="tr_cell">
+                <td id="td_c"  style="width:40% ">下次沟通时间：</td>
+                <td id="td_s2" width="13%">
+                    <input type="text" id="repaymentStart" style="width: 200px; display: none;" class="easyui-datetimebox" value="" comboname="repaymentStart">
+            </tr>
+
+            <!--tr  id="tr_cell">
+                  <td id="td_c"  style="width:15% ">下一步操作： </td>
+                  <td id="td_s2" width="13%">
+                              <select class="easyui-combobox combobox-f combo-f" id="productsTypeName" style="width: 200px; display: none;" editable="fales" comboname="productsTypeName">
+                                  <option value="1">请选择</option>
+                                  <option value="2">继续跟进</option>
+                                  <option value="3">预约还款</option>
+                                  <option value="4">修改还款计划</option>
+                                  <option value="5">……</option>
+
+                              </select>
+            </tr>
+
+           <tr id="tr_cell">
+           <td id="td_c"  style="width:40%;" >&nbsp;</span>是否加入黑名单：</td>
+           <td id="td_s2"  style="width:75%;">
+              <input type="radio" name="keap" id="keap2" value="0" checked="checked"/>是
+              <input type="radio" name="keap" id="keap1" value="1"/>否
+              </td>
+           </tr-->
+
+
+
+            <tr><td></td>
+                <td align="center">
+	                    	<span>
+		                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#dlg').dialog('open')">确认</a>
+		                        &nbsp;
+								<a id="submit" href="#" class="easyui-linkbutton l-btn" onClick="commitDeratePayment();" group="">取消</a>
+
+
+	                        </span>
+                </td>
+            </tr>
+            </tbody></table>
+
+        <IFRAME name="common" border=0 marginWidth=0 marginHeight=0 src="../common/公共信息.htm" frameBorder=No width="100%" scrolling=no height=600 allowTransparency>
+        </IFRAME>
+
+
+</body></html>

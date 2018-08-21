@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/xindaiparent/pom.xml" />
+        <option value="$PROJECT_DIR$/xindai-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/xindai-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/xindai-manage-service/pom.xml" />
+        <option value="$PROJECT_DIR$/xindai-manage-web/pom.xml" />
+      </list>
+    </option>
+  </component>
+</project>

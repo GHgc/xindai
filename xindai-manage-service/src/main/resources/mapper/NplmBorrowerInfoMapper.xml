@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xindai.credit.manage.mapper.NplmBorrowerInfoMapper">
+    <select  id ="selectBorrowerAllInfo" resultMap="borrowerAllInfoMap">
+        SELECT * FROM
+         NPLM_loan_contract loan INNER JOIN
+         nplm_contract_attribute b
+         ON  loan.LOAN_CONTRACT_NUM = b.`LOAN_CONTRACT_NUM`
+         INNER JOIN nplm_borrower_info c ON
+         loan.`borrower_id` = c.`id`;
+    </select>
+    <resultMap id="borrowerAllInfoMap" type="com.xindai.credit.bean.NplmBorrowerInfo" autoMapping="true">
+        <id column="id" property="id"></id>
+        <!--集合-->
+        <collection property="nplmLoanContract" ofType="com.xindai.credit.bean.NplmLoanContract" autoMapping="true">
+            <id property="id" column="id"></id>
+        </collection>
+        <collection property="nplmContractAttribute" ofType="com.xindai.credit.bean.NplmContractAttribute" autoMapping="true">
+            <id  property="id" column="id"></id>
+        </collection>
+    </resultMap>
+
+</mapper>
