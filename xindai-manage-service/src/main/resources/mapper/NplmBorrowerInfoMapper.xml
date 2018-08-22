@@ -12,17 +12,15 @@
 
     <select  id ="getPageQuery" resultMap="borrowerAllInfoMap">
         SELECT * FROM
-        NPLM_loan_contract loan INNER JOIN
+        nplm_loan_contract loan
+        INNER JOIN
         nplm_contract_attribute b
         ON  loan.LOAN_CONTRACT_NUM = b.`LOAN_CONTRACT_NUM`
         INNER JOIN nplm_borrower_info c
         ON loan.`borrower_id` = c.`id`
         <where>
-            <if test="contract.nbi.clientName!=null">
-                AND CLIENT_NAME=#{contract.nbi.clientName}
-            </if>
-            <if test="contract.loanContractId!=null">
-                and loan_contract_id = #{contract.loanContractId}
+            <if test="nplmBorrowerInfo.clientName!=null">
+               AND CLIENT_NAME=#{nplmBorrowerInfo.clientName}
             </if>
         </where>
         limit #{arg0},#{arg1}

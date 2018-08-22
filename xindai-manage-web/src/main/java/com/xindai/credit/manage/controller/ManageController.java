@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.xindai.credit.bean.NplmBorrowerInfo;
 import com.xindai.credit.service.NplmBorrowerInfoService;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,10 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @Controller
 public class ManageController {
-
+    private static final Logger LOGOGER = Logger.getLogger(ManageController.class);
     @Reference
     private NplmBorrowerInfoService nplmBorrowerInfoService;
 
@@ -37,6 +37,11 @@ public class ManageController {
     @ResponseBody
     public Map<String,Object> getPageQuery(  HttpServletRequest request){
 
+        // 过滤查询
+        String clientName = request.getParameter("clientName");
+        NplmBorrowerInfo nplmBorrowerInfo = new NplmBorrowerInfo();
+        nplmBorrowerInfo.setClientName(clientName);
+
         // 从前台获取数据
         int page = Integer.parseInt(request.getParameter("page"));
         int rows = Integer.parseInt(request.getParameter("rows"));
@@ -47,7 +52,7 @@ public class ManageController {
 
 
 
-        List<NplmBorrowerInfo> borrowerList = nplmBorrowerInfoService.getPageQuery(pageNum, rows);
+        List<NplmBorrowerInfo> borrowerList = nplmBorrowerInfoService.getPageQuery(pageNum, rows,nplmBorrowerInfo);
 
         Map map = new HashMap<>();
         map.put("total",total);

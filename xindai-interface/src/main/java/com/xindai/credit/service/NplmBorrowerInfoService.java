@@ -1,9 +1,7 @@
 package com.xindai.credit.service;
 
 import com.xindai.credit.bean.NplmBorrowerInfo;
-import org.apache.ibatis.annotations.Param;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface NplmBorrowerInfoService {
@@ -12,7 +10,7 @@ public interface NplmBorrowerInfoService {
     List<NplmBorrowerInfo> getAllBorrower();
 
     // 分页查询所有合同的信息列表
-    List<NplmBorrowerInfo> getPageQuery(int pageNum,int rows);
+    List<NplmBorrowerInfo> getPageQuery(int pageNum, int rows, NplmBorrowerInfo nplmBorrowerInfo);
 
     // 获取数据的总条数
     int  getCount();

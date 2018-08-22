@@ -86,18 +86,6 @@
 
 </script>
 
-<!--<script type="text/javascript">
-    $(function () {
-        $("#tt").datagrid({
-            url:'pageQuery',
-            pagination:true,
-            queryParams:{"borrowerList":""},
-            pageNumber:1,
-            pageSize:1,
-            pageList:[1,10]
-        })
-    });
-</script>-->
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -107,6 +95,62 @@
         $('table.datagrid-btable').find('.datagrid-cell-c1-item_id34').css("text-align", 'right');
     });
 </script>
+
+<script type="text/javascript">
+/*    function contractNo(value,name){
+        alert(value+":"+name)
+
+    }*/
+/*    var contractNoM = $('#contractNo').searchbox('menu');     // 获取菜单项var item = m.menu('findItem', 'Sports News');     // 查找菜单项
+    // 更改菜单项图标
+    contractNoM.menu('setIcon', {
+        target: item.target,
+        iconCls: 'icon-save'
+    });
+    // 选择搜索类型名
+    $('#contractNo').searchbox('contractNo', 'sports');*/
+
+
+    // 封装要传递的参数数组
+    function getSearchInfo() {
+        var param = {};
+//        param['clientName'] = $('#clientName').val();
+//        param['contractNo'] = $('#contractNo').val();
+        var clientName = $('#clientName').val();
+        param['clientName'] = clientName;
+        return param;
+    }
+    function searchInfo(){
+
+        var param = getSearchInfo();
+        $('#tt').datagrid({queryParams:param});
+        $('#tt').datagrid('load');
+    }
+
+    //	getPager	datagrid(数据表格)中,返回页面对象
+    var p = $("#tt").datagrid("getPager");
+    p.pagination({
+        /*
+            onChangePageSize 分页控件的事件
+            参数是 pageSize
+            更改页面大小时触发
+        */
+        onChangePageSize: function (pageSize) {
+            // refresh	easyUI分页控件中刷新页面的方法
+            p.pagination('refresh')
+        },
+        /*
+            用户选择一个新页面的时候触发。回调函数包含2个参数：
+            pageNumber：新的页数。
+            pageSize: 页面大小（每页显示的条数）。
+        */
+        onSelectPage: function (pageNumber, pageSize) {
+            searchInfo();
+        }
+    }
+)
+</script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('table.datagrid-htable').find('.datagrid-cell').css("text-align", 'center');
@@ -147,7 +191,7 @@
                 合同编号：
             </td>
             <td width="20%">
-                <input  id="clientName" name="clientName" style="width:188px;" value="">
+                <input  id="contractNo" name="contractNo" class="easyui-searchbox" style="width:188px;" value="">
                 <input type="hidden" id="pPage" name="pageSize" value="">
                 <input type="hidden" id="pSize" name="pageSize" value="">
                 <input type="hidden" id="sysId" name="sysId" value="11">
@@ -167,7 +211,7 @@
                 证件号：
             </td>
             <td width="20%">
-                <input  id="clientName" name="clientName" style="width:188px;" value="">
+                <input  id="" name="" style="width:188px;" value="">
                 <input type="hidden" id="pPage" name="pageSize" value="">
                 <input type="hidden" id="pSize" name="pageSize" value="">
                 <input type="hidden" id="sysId" name="sysId" value="11">
@@ -188,7 +232,7 @@
 
             <td width="10%" class="td_1">城市地区：</td>
             <td width="20%">
-                <input  id="clientName" name="clientName" style="width:188px;" value="">
+                <input  id="city" class="easyui-searchbox" name="city" style="width:188px;" value="">
                 <input type="hidden" id="pPage" name="pageSize" value="">
                 <input type="hidden" id="pSize" name="pageSize" value="">
                 <input type="hidden" id="sysId" name="sysId" value="11">
@@ -197,7 +241,7 @@
 
             <td width="10%" class="td_1">营业部：</td>
             <td width="20%">
-                <input  id="clientName" name="clientName" style="width:188px;" value="">
+                <input  id="" name="" style="width:188px;" value="">
                 <input type="hidden" id="pPage" name="pageSize" value="">
                 <input type="hidden" id="pSize" name="pageSize" value="">
                 <input type="hidden" id="sysId" name="sysId" value="11">
@@ -205,8 +249,6 @@
 
 
         </tr>
-
-
 
         <tr>
 
@@ -365,11 +407,10 @@
         <tr >
 
             <th data-options="field:'item_id1',width:200">操作</th>
-            <th data-options="field:'loanContractNum',width:100, formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.loanContractNum;} else {return value;}}">合同编号</th>
+            <th id="contractNoM"  data-options="field:'loanContractNum',width:100, formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.loanContractNum;} else {return value;}}">合同编号</th>
             <th data-options="field:'item_id15',width:100">合同状态</th>
 
             <th data-options="field:'clientName',width:100">客户姓名</th>
-            <!--<th data-options="field:'clientName',width:100, formatter:function(value,row,index){if (row.borrowerInfoList){return row.borrowerInfoList.clientName;} else {return value;}}">客户姓名</th>-->
             <th data-options="field:'identityType',width:120">证件类型</th>
             <th data-options="field:'identityNum',width:150">证件号</th>
 
@@ -407,8 +448,6 @@
             <th data-options="field:'item_id28',width:100">放款模式</th>
             <th data-options="field:'item_id29',width:150">放款时间</th>
             <th data-options="field:'item_id30',width:100">放款金额</th>
-
-
 
         </tr>
 

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!--
+	####Maven依赖
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	
+	####常用输出布局通配符
+	%m 输出消息
+	%p 输出日志级别，通常为[%-5p]
+	%r 输出自应用启动开始到输出该行日志所花的时间
+	%c 输出日志所在的全类名
+	%t 输出打印该日志的线程名
+	%n 换行
+	%d{格式} 输出日期,%d{yyyy-MM-dd HH:mm:ss,SSS}
+	%l 打印日志所在行详细信息，全类名+方法名+行
+	%M 只输出方法名
+	%C 全类名
+	%F 所在源文件名称
+	
+	####文件Appender
+	三种常用日志文件
+	FileAppender 日志文件
+	RollingFileAppender 滚动日志文件
+	DailyRollingFileAppender 每日生成一个滚动日志文件(可以配置单个文件大小，总文件个数)
+	<appender name="xxx" class="org.apache.log4j.DailyRollingFileAppender"> name：在当前配置文件中做为唯一id表示Appender
+		<param name="File" 			value="D:\\atguigu4XML.log" />	输出路径
+		<param name="Append" 		value="true" />		true：追加输出 false：清空原来的记录后输出
+		<param name="DatePattern" 	value="'.'yyyy-MM-dd" />	后缀名格式
+		<layout class="org.apache.log4j.PatternLayout">		指定输出布局
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C{1}:%M) - %m%n" />
+		</layout>
+	</appender>
+	
+	####控制台Appender
+	<appender name="log.console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C{1}:%M) - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter"> 配置过滤
+				<param name="levelMin" 		value="warn" />  该Appender可输出的最低日志级别
+				<param name="levelMax" 		value="warn" />  该Appender可输出的最高日志级别
+				<param name="AcceptOnMatch" value="true" />  
+		</filter>
+	</appender>
+	
+	####自定义记录器
+	additivity="记录器的传播性，默认为true，即会用所有的记录器输出，改为false后则只使用最佳匹配的记录器输出"
+	name="指定包路径，相当于basepackage"
+	<logger name="xxxx" additivity="true">
+		<level value="info" />
+		<appender-ref ref="xxx" /> 引用Appender，需要写其name
+	</logger>
+	 
+	####根记录器
+	<root>
+		<level value="debug" />
+		<appender-ref ref="log.console" />
+		<appender-ref ref="log.file" />
+	</root>
+	-->
+	<appender name="log.console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C{1}:%M) - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="log.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" 			value="D:\\ideaWorkspace\\xindai-log\\error.log" />
+		<param name="Append" 		value="true" />
+		<param name="DatePattern" 	value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C{1}:%M) - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" 		value="error" />
+			<param name="levelMax" 		value="error" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+	<logger name="com.easyloan" additivity="true">
+		<level value="debug"></level>
+		<appender-ref ref="log.console"></appender-ref>
+		<appender-ref ref="log.file"></appender-ref>
+	</logger>
+	<root>
+		<level value="error" />
+		<appender-ref ref="log.console" />
+	</root>
+</log4j:configuration>
