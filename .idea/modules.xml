@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/xindai.iml" filepath="$PROJECT_DIR$/.idea/xindai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-bean/xindai-bean.iml" filepath="$PROJECT_DIR$/xindai-bean/xindai-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-common/xindai-common.iml" filepath="$PROJECT_DIR$/xindai-common/xindai-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-interface/xindai-interface.iml" filepath="$PROJECT_DIR$/xindai-interface/xindai-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-parent/xindai-parent.iml" filepath="$PROJECT_DIR$/xindai-parent/xindai-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-service-util/xindai-service-util.iml" filepath="$PROJECT_DIR$/xindai-service-util/xindai-service-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xindai-web-util/xindai-web-util.iml" filepath="$PROJECT_DIR$/xindai-web-util/xindai-web-util.iml" />
+    </modules>
+  </component>
+</project>
