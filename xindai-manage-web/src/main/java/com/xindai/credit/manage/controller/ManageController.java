@@ -35,7 +35,7 @@ public class ManageController {
     // 查询数据
     @RequestMapping("pageQuery")
     @ResponseBody
-    public Map<String,Object> getPageQuery(  HttpServletRequest request){
+    public Map<String,Object> getPageQuery( HttpServletRequest request){
 
         // 过滤查询
         String clientName = request.getParameter("clientName");

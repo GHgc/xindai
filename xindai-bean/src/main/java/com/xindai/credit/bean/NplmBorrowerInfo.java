@@ -79,6 +79,11 @@ public class NplmBorrowerInfo implements Serializable {
     @Transient
     private NplmLoanContract nplmLoanContract;
 
+    @Transient
+
+    private NplmContractAttribute nplmContractAttribute;
+
+
     public void setNplmLoanContract(NplmLoanContract nplmLoanContract) {
         this.nplmLoanContract = nplmLoanContract;
     }
@@ -94,11 +99,6 @@ public class NplmBorrowerInfo implements Serializable {
     public NplmContractAttribute getNplmContractAttribute() {
         return nplmContractAttribute;
     }
-
-    @Transient
-
-    private NplmContractAttribute nplmContractAttribute;
-
 
     @Id
     @Column(name = "id")

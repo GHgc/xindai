@@ -97,19 +97,11 @@
 </script>
 
 <script type="text/javascript">
-/*    function contractNo(value,name){
-        alert(value+":"+name)
-
-    }*/
-/*    var contractNoM = $('#contractNo').searchbox('menu');     // 获取菜单项var item = m.menu('findItem', 'Sports News');     // 查找菜单项
-    // 更改菜单项图标
-    contractNoM.menu('setIcon', {
-        target: item.target,
-        iconCls: 'icon-save'
-    });
-    // 选择搜索类型名
-    $('#contractNo').searchbox('contractNo', 'sports');*/
-
+    // 操作列表
+    function operation() {
+        return "                <a href=\"../common/查看还款情况页面.htm\" onClick=\"window.open(this.href,    '_self',    'scrollbars=yes');return  false\">查看还款情况</a>\n" +"&nbsp;"+
+            "                <a href=\"../common/修改还款情况页面.htm\" onClick=\"window.open(this.href,    '_self',    'scrollbars=yes');return  false\">修改还款情况</a>"
+    }
 
     // 封装要传递的参数数组
     function getSearchInfo() {
@@ -406,26 +398,100 @@
         <thead>
         <tr >
 
-            <th data-options="field:'item_id1',width:200">操作</th>
-            <th id="contractNoM"  data-options="field:'loanContractNum',width:100, formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.loanContractNum;} else {return value;}}">合同编号</th>
-            <th data-options="field:'item_id15',width:100">合同状态</th>
+            <th data-options="field:'item_id1',width:200,formatter:operation">操作</th>
+            <th id="contractNoM"  data-options="field:'loanContractNum',width:100,formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.loanContractNum;} else {return value;}}">合同编号</th>
+            <th data-options="field:'contractType',width:100,formatter:function(value,row,index){
+					if(row.nplmLoanContract.contractType==1){
+						return '还款中'
+					}
+					if(row.nplmLoanContract.contractType==-1){
+						return '合同废止'
+					}
+					if(row.nplmLoanContract.contractType==2){
+						return '逾期'
+					}
+					if(row.nplmLoanContract.contractType==9){
+						return '正常还清'
+					}
+					if(row.nplmLoanContract.contractType==10){
+						return '合同终止'
+					}
+					if(row.nplmLoanContract.contractType==11){
+						return '合同核销'
+					}
+					if(row.nplmLoanContract.contractType==12){
+						return '减免结清'
+					}
+					if(row.nplmLoanContract.contractType==13){
+						return '特殊减免结清'
+					}
+					if(row.nplmLoanContract.contractType==14){
+						return '提前结清'
+					}
+					if(row.nplmLoanContract.contractType==15){
+						return '放款退回结清'
+					}
+					if(row.nplmLoanContract.contractType==null){
+						return ''
+					}
+				}">合同状态</th>
 
             <th data-options="field:'clientName',width:100">客户姓名</th>
             <th data-options="field:'identityType',width:120">证件类型</th>
             <th data-options="field:'identityNum',width:150">证件号</th>
 
 
-            <th data-options="field:'item_id6',width:100">贷款品种</th>
-            <th data-options="field:'item_id55',width:100">业务模式</th>
-            <th data-options="field:'item_id7',width:100">信托机构</th>
-            <th data-options="field:'item_id8',width:100">信托产品系列</th>
-            <th data-options="field:'item_id9',width:100">信托计划</th>
-            <th data-options="field:'item_id10',width:100">城市地区</th>
+            <th data-options="field:'proCategoryName',width:100,formatter:function(value,row,index){if (row.nplmLoanContract){return row.nplmLoanContract.proCategoryName;} else {return value;}}">贷款品种</th>
+            <th data-options="field:'businessType',width:100, formatter:function(value,row,index){
+            if (row.nplmContractAttribute.businessType==null){
+                return '';
+            }
+            if (row.nplmContractAttribute.businessType==1){
+                return '转债权';
+            }
+            if (row.nplmContractAttribute.businessType==2){
+                return '火凤凰';
+            }
+            if (row.nplmContractAttribute.businessType==3){
+                return '信托';
+            }
+            if (row.nplmContractAttribute.businessType==4){
+                return '互联网';
+            }
+            if (row.nplmContractAttribute.businessType==5){
+                return '融资租凭';
+            }
+            if (row.nplmContractAttribute.businessType==6){
+                return '房贷一对一';
+            }
+            }">业务模式</th>
+            <th data-options="field:'guaranteeCompany',width:100,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.guaranteeCompany;} else {return value;}}">信托机构</th>
+            <th data-options="field:'guaranteeCompany',width:100,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.guaranteeCompany;} else {return value;}}">信托产品系列</th>
+            <th data-options="field:'guaranteeCompany',width:100,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.guaranteeCompany;} else {return value;}}">信托计划</th>
+            <th data-options="field:'city',width:100,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.city;} else {return value;}}">城市地区</th>
 
-            <th data-options="field:'item_id11',width:100">营业部</th>
-            <th data-options="field:'item_id12',width:100">是否加急</th>
-            <th data-options="field:'item_id13',width:100">签约方式</th>
-            <th data-options="field:'item_id14',width:150">合同签订时间</th>
+            <th data-options="field:'deptName',width:100,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.deptName;} else {return value;}}">营业部</th>
+            <th data-options="field:'isExpedited',width:100,formatter:function(value,row,index){
+            if (row.nplmContractAttribute.isExpedited=='N'){
+                return '否';
+            }
+            if (row.nplmContractAttribute.isExpedited=='Y'){
+                return '是';
+            } else {
+                return '';
+            }
+            }">是否加急</th>
+            <th data-options="field:'signType',width:100,formatter:function(value,row,index){
+            if (row.nplmContractAttribute.signType==1){
+                return '纸质签约';
+            }
+            if (row.nplmContractAttribute.signType==2){
+                return '电子签约';
+            } else {
+                return '';
+            }
+            }">签约方式</th>
+            <th data-options="field:'signDate',width:150,formatter:function(value,row,index){if (row.nplmContractAttribute){return row.nplmContractAttribute.signDate;} else {return value;}}">合同签订时间</th>
 
             <th data-options="field:'item_id33',width:100">合同变更类型</th>
             <th data-options="field:'item_id34',width:100">合同变更金额</th>
